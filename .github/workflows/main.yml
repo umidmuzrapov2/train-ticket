@@ -35,10 +35,10 @@ jobs:
 
       - name: see inside
         run: ls -a
-        working-directory: ./tool
+        working-directory: ./tool/out
         
       - name: Compile and Run DeltaExtraction.java
-        run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="./repos/train-ticket-microservices"
+        run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="./repos/train-ticket-microservices > /result.txt"
         working-directory: ./tool
 
       - name: Save diff.txt as artifact
