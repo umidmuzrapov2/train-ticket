@@ -38,12 +38,11 @@ jobs:
         working-directory: ./tool/out
         
       - name: Compile and Run DeltaExtraction.java
-        run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="./repos/train-ticket-microservices > /result.txt"
+        run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="./repos/train-ticket-microservices"
         working-directory: ./tool
 
       - name: Save diff.txt as artifact
         uses: actions/upload-artifact@v2
         with:
           name: changed-files-diff
-          path: ./out
-          working-directory: ./tool
+          path: ./tool/out
