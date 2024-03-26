@@ -1,0 +1,45 @@
+name: Build and Extract
+
+on:
+  push:
+    branches:
+      - master  # Adjust branch name if needed
+
+jobs:
+  build-and-extract:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Install Maven
+        run: sudo apt-get install -y maven
+
+      - name: Clone cimet Repository
+        run: git clone https://github.com/cloudhubs/cimet tool
+        working-directory: ./  # Clone into the root directory
+
+      - name: Build cimet with Maven
+        run: mvn clean install -DskipTests
+        working-directory: ./tool
+
+      - name: Compile and Run IntermediateExtraction.java
+        run: |
+          javac IntermediateExtraction.java
+          java IntermediateExtraction
+        working-directory: ./tool//src/main/java/edu/university/ecs/lab/intermediate/create
+
+      - name: Compile and Run DeltaExtraction.java
+        run: |
+          javac DeltaExtraction.java
+          java DeltaExtraction ./out > DC.txt
+        working-directory: ./tool
+
+      - name: Save DC.txt
+        run: cp ./tool/DC.txt $GITHUB_WORKSPACE/DC.txt
