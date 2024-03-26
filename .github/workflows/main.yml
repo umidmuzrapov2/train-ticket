@@ -35,7 +35,7 @@ jobs:
 
       - name: see inside
         run: ls -a
-        working-directory: ./tool/repos
+        working-directory: ./tool/repos/train-ticket-microservices
         
       - name: Compile and Run DeltaExtraction.java
         run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="./repos > DC.txt"
