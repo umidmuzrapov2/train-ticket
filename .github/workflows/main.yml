@@ -35,7 +35,7 @@ jobs:
 
       - name: see inside
         run: ls -a
-        working-directory: ./tool/repos/train-ticket-microservices
+        working-directory: ./tool
         
       - name: Compile and Run DeltaExtraction.java
         run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="./repos/train-ticket-microservices"
@@ -45,5 +45,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: changed-files-diff
-          path: out
+          path: ./out
           working-directory: ./tool
