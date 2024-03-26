@@ -22,7 +22,7 @@ jobs:
         run: sudo apt-get install -y maven
 
       - name: Clone cimet Repository
-        run: git clone https://github.com/cloudhubs/cimet tool
+        run: git clone https://github.com/umidmuzrapov2/cimet tool
         working-directory: ./  # Clone into the root directory
 
       - name: Build cimet with Maven
