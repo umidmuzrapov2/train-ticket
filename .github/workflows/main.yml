@@ -38,7 +38,7 @@ jobs:
         working-directory: ./tool/repos/train-ticket-microservices
         
       - name: Compile and Run DeltaExtraction.java
-        run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="https://github.com/cloudhubs/train-ticket.git > DC.txt"
+        run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="./repos > DC.txt"
         working-directory: ./tool
 
       - name: Save DC.txt
