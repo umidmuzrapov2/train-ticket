@@ -32,16 +32,12 @@ jobs:
       - name: Compile and Run RestExtraction.java
         run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.intermediate.create.RestExtraction"
         working-directory: ./tool
-
-      - name: see inside
-        run: ls -a
-        working-directory: ./tool/out
         
       - name: Compile and Run DeltaExtraction.java
         run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="./repos/train-ticket-microservices"
         working-directory: ./tool
 
-      - name: Save diff.txt as artifact
+      - name: Save out folder
         uses: actions/upload-artifact@v2
         with:
           name: changed-files-diff
