@@ -29,10 +29,10 @@ jobs:
         run: mvn clean install -DskipTests
         working-directory: ./tool
 
-      - name: Compile and Run IntermediateExtraction.java
+      - name: Compile and Run Rest.java
         run: |
-          javac IntermediateExtraction.java
-          java IntermediateExtraction
+          javac RestExtraction.java
+          java RestExtraction
         working-directory: ./tool//src/main/java/edu/university/ecs/lab/intermediate/create
 
       - name: Compile and Run DeltaExtraction.java
