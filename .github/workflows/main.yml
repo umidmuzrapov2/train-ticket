@@ -41,5 +41,9 @@ jobs:
         run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="./repos/train-ticket-microservices"
         working-directory: ./tool
 
-      - name: Save DC.txt
-        run: cp ./tool/DC.txt $GITHUB_WORKSPACE/DC.txt
+      - name: Save diff.txt as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: changed-files-diff
+          path: out
+          working-directory: ./tool
