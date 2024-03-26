@@ -29,16 +29,12 @@ jobs:
         run: mvn clean install -DskipTests
         working-directory: ./tool
 
-      - name: Compile and Run Rest.java
-        run: |
-          javac RestExtraction.java
-          java RestExtraction
-        working-directory: ./tool//src/main/java/edu/university/ecs/lab/intermediate/create
+      - name: Compile and Run RestExtraction.java
+        run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.intermediate.create.RestExtraction"
+        working-directory: ./tool
 
       - name: Compile and Run DeltaExtraction.java
-        run: |
-          javac DeltaExtraction.java
-          java DeltaExtraction ./out > DC.txt
+        run: mvn exec:java -Dexec.mainClass="edu.university.ecs.lab.deltas.DeltaExtraction" -Dexec.args="./out > DC.txt"
         working-directory: ./tool
 
       - name: Save DC.txt
